@@ -1,3 +1,128 @@
+/*Huisstijl*/
+:root {
+
+    --huisstijlkleur-grijs: #96aab9;
+    --huisstijlkleur-donkergrijs: #4d565e;
+    --huisstijltekst: Verdana, Sans-serif;
+}
+
+
 html {
-    background-color: red;
+    font-family: var(--huisstijltekst);
+}
+
+header {
+    width: 100%;
+    height: 5em;
+    background-color: #96aab9;
+    color: white;
+}
+
+
+body,
+header,
+section,
+figure {
+    display: flex;
+    justify-content: center;
+}
+
+body {
+    flex-direction: column;
+    margin: 0;
+}
+
+section {
+    padding-top: 2em;
+}
+
+figure {
+    margin: 0;
+}
+
+ul {
+    display: flex;
+    justify-content: center;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    padding-inline-start: 0;
+}
+
+li {
+    list-style-type: none;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+button {
+    width: 5em;
+    height: 5em;
+    border: 2px solid var(--huisstijlkleur-donkergrijs);
+    border-radius: 100%;
+    background-color: var(--huisstijlkleur-grijs);
+
+}
+
+section ul li button {
+    position: relative;
+    background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: 200ms;
+    z-index: 1;
+}
+
+section ul li button span {
+    transition: 200ms;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+}
+
+section ul li button:hover span {
+    transform: translate(-50%, 3em);
+    opacity: 1;
+    z-index: -1;
+}
+
+section ul li button:hover {
+    transform: scale(1.2);
+    background-color: var(--huisstijlkleur-donkergrijs);
+    z-index: 1;
+}
+
+section:nth-of-type(1) ul li:nth-of-type(1) button {
+    background-image: url(../images/id.png);
+}
+
+section:nth-of-type(1) ul li:nth-of-type(2) button {
+    background-image: url(../images/party-hat.png);
+}
+
+section:nth-of-type(1) ul li:nth-of-type(3) button {
+    background-image: url(../images/pond.png);
+}
+
+section:nth-of-type(3) ul li:nth-of-type(1) button {
+    background-image: url(../images/reaction.png);
+}
+
+section:nth-of-type(3) ul li:nth-of-type(2) button {
+    background-image: url(../images/baguette.png);
+}
+
+section:nth-of-type(3) ul li:nth-of-type(3) button {
+    background-image: url(../images/duck.png);
+}
+
+section:nth-of-type(3) ul li:nth-of-type(4) button {
+    background-image: url(../images/poop.png);
+}
+
+
+img {
+    max-width: 40%;
 }
