@@ -1,6 +1,6 @@
 const myP = document.querySelector("p");
 
-const myRequest = new Request("https://github.com/larsvv99/web-app-from-scratch-2324/blob/main/docs/json/eigenschappen.json");
+const myRequest = new Request("https://larsvv99.github.io/web-app-from-scratch-2324/json/eigenschappen.json");
 
 fetch(myRequest)
     .then((response) => {
