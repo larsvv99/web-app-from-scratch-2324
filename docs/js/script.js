@@ -1,9 +1,19 @@
-const teamMembers = {
+const myP = document.querySelector("p");
 
+const myRequest = new Request("https://github.com/larsvv99/web-app-from-scratch-2324/blob/main/docs/json/eigenschappen.json");
 
-}
+fetch(myRequest)
+    .then((response) => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
 
-teamMembers.members[0]
+        return response.blob();
+    })
+    .then((response) => {
+        myP.innerText = URL.createObjectURL(response);
+    });
+console.log(myRequest)
 
 const personalSiteInfo = {
     "eend": {
