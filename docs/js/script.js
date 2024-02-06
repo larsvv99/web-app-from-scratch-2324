@@ -1,7 +1,7 @@
 const myImage = document.querySelector("img");
 
 const myRequest = new Request("https://larsvv99.github.io/web-app-from-scratch-2324/json/eigenschappen.json");
-console.log(myRequest)
+
 fetch(myRequest)
     .then((response) => {
         if (!response.ok) {
@@ -11,8 +11,10 @@ fetch(myRequest)
         return response.blob();
     })
     .then((response) => {
-        myImage.src = URL.createObjectURL(response);
+        myImage.src = URL.createObjectURL(response)
+        console.log(myRequest)
     });
+
 
 const personalSiteInfo = {
     "eend": {
