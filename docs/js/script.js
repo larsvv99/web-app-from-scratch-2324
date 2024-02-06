@@ -11,7 +11,7 @@ fetch(myRequest)
         return response.json();
     })
     .then((response) => {
-
+        console.log(response)
     });
 
 
