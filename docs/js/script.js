@@ -1,4 +1,5 @@
 /*Elementen*/
+const myPage = document.querySelector("body");
 const myInfoTitle = document.querySelector("h2");
 const myInfo = document.querySelector("p");
 const myInfoField = document.querySelector("figcaption");
@@ -12,7 +13,7 @@ const myBreadButton = document.querySelector("section:nth-of-type(3) ul li:nth-o
 const myKwekButton = document.querySelector("section:nth-of-type(3) ul li:nth-of-type(3) button");
 const myTargetButton = document.querySelector("section:nth-of-type(3) ul li:nth-of-type(4) button");
 
-console.log(myInfo, myInfoTitle, myInfoField)
+console.log(myPage)
 
 const myRequest = new Request("https://larsvv99.github.io/web-app-from-scratch-2324/json/eigenschappen.json");
 
@@ -64,15 +65,15 @@ let infoFieldVisible = false;
 function toggleInfoText(newTitle, newText) {
     // Als het tekstvakje zichtbaar is en de nieuwe tekst hetzelfde is als de huidige tekst, verberg myInfoField
     if (infoFieldVisible && myInfo.innerText === newText && myInfoTitle.innerText === newTitle) {
-        myInfoField.style.display = "none";
         infoFieldVisible = false;
+        myPage.classList.toggle("cardAnimation");
+
     } else {
         // Als het tekstvakje niet zichtbaar is of de nieuwe tekst anders is dan de huidige tekst, update de tekst en maak myInfoField zichtbaar
         myInfo.innerText = newText;
         myInfoTitle.innerText = newTitle;
-        myInfoField.style.display = "block";
-
         infoFieldVisible = true;
+        myPage.classList.toggle("cardAnimation");
     }
 }
 
