@@ -1,9 +1,10 @@
 /*Huisstijl*/
 :root {
-
     --huisstijlkleur-grijs: #96aab9;
     --huisstijlkleur-donkergrijs: #4d565e;
-    --huisstijltekst: Verdana, Sans-serif;
+    --huisstijlkleur-donkeroranje: #cb2f00;
+    --huisstijlkleur-wit: #ffffff;
+    --huisstijltekst: Poppins, Sans-serif;
 }
 
 
@@ -14,8 +15,8 @@ html {
 header {
     width: 100%;
     height: 5em;
-    background-color: #96aab9;
-    color: white;
+    background-color: var(--huisstijlkleur-grijs);
+    color: var(--huisstijlkleur-wit);
 }
 
 
@@ -34,11 +35,73 @@ body {
 
 section {
     padding-top: 2em;
+    position: relative;
+}
+
+
+
+main {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
 }
 
 figure {
     margin: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+
 }
+
+figcaption {
+    position: absolute;
+    display: none;
+    align-items: center;
+    padding: 1em;
+    height: 10em;
+    width: 10em;
+    background-color: var(--huisstijlkleur-grijs);
+    z-index: -5;
+    animation: kaartje 3s ease-in-out;
+    animation-fill-mode: forwards;
+    border: 2px solid var(--huisstijlkleur-donkergrijs);
+    box-shadow: 0px 5px 6px 3px rgba(55, 55, 55, 0.25);
+}
+
+.slide-animation {}
+
+
+@keyframes kaartje {
+    0% {
+        display: none;
+    }
+
+    10% {
+        display: none;
+        transform: translateX(0) rotateY(360deg);
+    }
+
+    20% {
+        display: none;
+        opacity: 0;
+    }
+
+    40% {
+        display: block;
+        transform: translateX(15em) rotate(0deg);
+    }
+
+    45% {
+        opacity: 100%;
+    }
+
+    100% {
+        transform: translateX(15em) rotate(0deg);
+    }
+}
+
 
 ul {
     display: flex;
@@ -92,6 +155,8 @@ section ul li button:hover {
     transform: scale(1.2);
     background-color: var(--huisstijlkleur-donkergrijs);
     z-index: 1;
+    border: 2px solid var(--huisstijlkleur-donkeroranje);
+    box-shadow: 0px 2px 2px 2px rgba(55, 55, 55, 0.2);
 }
 
 section:nth-of-type(1) ul li:nth-of-type(1) button {
@@ -124,5 +189,6 @@ section:nth-of-type(3) ul li:nth-of-type(4) button {
 
 
 img {
+    min-width: 15em;
     max-width: 40%;
 }
