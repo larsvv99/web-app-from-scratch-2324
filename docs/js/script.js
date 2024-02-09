@@ -3,6 +3,7 @@ const myPage = document.querySelector("body");
 const myInfoTitle = document.querySelector("h2");
 const myInfo = document.querySelector("p");
 const myInfoField = document.querySelector("figcaption");
+const myDuck = document.querySelector("img");
 
 /*Buttons*/
 const myNameButton = document.querySelector("section:nth-of-type(1) ul li:nth-of-type(1) button");
@@ -59,6 +60,42 @@ fetch(myRequest)
         });
     });
 
+// // API background images //
+// document.addEventListener('DOMContentLoaded', function () {
+//     getRandomBackground();
+// });
+// const accessKey = 'ONdhqjmgA1HbTqfRJzMzoA1AKmlO-gUalqVelRwlfBM'
+// function getRandomBackground() {
+
+//     // Make a request to the Unsplash API
+//     fetch(`https://api.unsplash.com/photos/random?query=background&client_id=${accessKey}`)
+//         .then(response => {
+//             if (!response.ok) {
+//                 throw new Error(`Network response was not ok: ${response.statusText}`);
+//             }
+//             return response.json();
+//         })
+//         .then(data => {
+//             const backgroundUrl = data.urls.regular;
+//             document.querySelector("section:nth-of-type(2)").style.backgroundImage = `url(${backgroundUrl})`;
+//         })
+//         .catch(error => console.error('Error fetching background image:', error));
+// }
+
+window.addEventListener("scroll", () => {
+    const img = document.getElementsByClassName("animated-img");
+    const imgRect = img.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    if (imgRect.top >= 0 && imgRect.bottom <= windowHeight) {
+        const scrollPercent = (window.pageYOffset + windowHeight - imgRect.top) / imgRect.height;
+        img.style.setProperty("--scroll", scrollPercent);
+    }
+});
+
+
+
+
 let infoFieldVisible = false;
 
 // Functie om de tekst van myInfo en myInfoTitle te updaten en de zichtbaarheid van myInfoField te beheren
@@ -66,33 +103,35 @@ function toggleInfoText(newTitle, newText) {
     // Als het tekstvakje zichtbaar is en de nieuwe tekst hetzelfde is als de huidige tekst, verberg myInfoField
     if (infoFieldVisible && myInfo.innerText === newText && myInfoTitle.innerText === newTitle) {
         infoFieldVisible = false;
-        myPage.classList.toggle("cardAnimation");
+        myPage.classList.remove("cardAnimation");
 
     } else {
         // Als het tekstvakje niet zichtbaar is of de nieuwe tekst anders is dan de huidige tekst, update de tekst en maak myInfoField zichtbaar
         myInfo.innerText = newText;
         myInfoTitle.innerText = newTitle;
         infoFieldVisible = true;
-        myPage.classList.toggle("cardAnimation");
+        myPage.classList.add("cardAnimation");
     }
 }
 
 
-const personalSiteInfo = {
-    "eend": {
-        "naam": "Lars",
-        "leeftijd": 168,
-        "eendenNaam": "Moquaak a.k.a. Redouan Kwakkie",
-        "karakter": "Baldadig",
-        "woonVijver": "Emiclaer vijver",
-        "favorieteBrood": "Kwarkbrood",
-        "kwikKwekKwak": "Kwik",
-        "favorieteDoelwit": [
-            {
-                "doelwit1": "Gordon",
-                "doelwit2": "Donald Duck",
-                "doelwit3": "Redouan Kwakkie"
-            }
-        ]
+/*Thema wijziging*/
+function toggleAnimationClass() {
+    const checkbox = document.querySelector("input[type='checkbox']");
+
+    console.log(checkbox)
+    if (checkbox.checked) {
+        myPage.classList.add("checked");
+        myPage.classList.remove("cardAnimation");
+        myDuck.src = "./images/badeendje_horror3.png"
+
+    } else {
+        myPage.classList.remove("checked");
+        myPage.classList.remove("cardAnimation");
+        myDuck.src = "./images/badeendje.png"
+
+
     }
 }
+
+document.querySelector("input[type='checkbox']").addEventListener("change", toggleAnimationClass);

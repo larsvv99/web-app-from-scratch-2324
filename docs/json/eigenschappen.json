@@ -2,10 +2,26 @@
     "eend": {
         "naam": "Lars",
         "leeftijd": 168,
-        "eendenNaam": "Moquaak a.k.a. Redouan Kwakkie",
+        "eendenNaam": "Moquaak",
         "karakter": "Baldadig",
         "woonVijver": "Emiclaer vijver",
         "favorieteBrood": "Kwarkbrood",
+        "kwikKwekKwak": "Kwik",
+        "favorieteDoelwit": [
+            {
+                "doelwit1": "Gordon",
+                "doelwit2": "Donald Duck",
+                "doelwit3": "Redouan Kwakkie"
+            }
+        ]
+    },
+    "eend2": {
+        "naam": "Lars",
+        "leeftijd": 168,
+        "eendenNaam": "Redouan Kwakkie",
+        "karakter": "Moordlustig",
+        "woonVijver": "Binnenplaats vijver",
+        "favorieteBrood": "Bedroggebrood",
         "kwikKwekKwak": "Kwik",
         "favorieteDoelwit": [
             {

@@ -1,15 +1,21 @@
+/***********/
 /*Huisstijl*/
+/***********/
 :root {
     --huisstijlkleur-grijs: #96aab9;
     --huisstijlkleur-donkergrijs: #4d565e;
     --huisstijlkleur-donkeroranje: #cb2f00;
+    --huisstijlkleur-gevangenisgrijs: #bbbbbb;
     --huisstijlkleur-wit: #ffffff;
-    --huisstijltekst: Poppins, Sans-serif;
+    --huisstijltekst: "Poppins", sans-serif;
 }
-
 
 html {
     font-family: var(--huisstijltekst);
+}
+
+input {
+    appearance: none;
 }
 
 header {
@@ -17,8 +23,8 @@ header {
     height: 5em;
     background-color: var(--huisstijlkleur-grijs);
     color: var(--huisstijlkleur-wit);
+    align-items: center;
 }
-
 
 body,
 header,
@@ -33,18 +39,67 @@ body {
     margin: 0;
 }
 
-section {
-    padding-top: 2em;
-    position: relative;
+body.checked {
+    background-color: var(--huisstijlkleur-gevangenisgrijs);
 }
-
-
 
 main {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+}
 
+section {
+    padding-top: 2em;
+    position: relative;
+}
+
+img {
+    min-width: 15em;
+    max-width: 40%;
+}
+
+
+
+
+
+/****************/
+/*****HEADER*****/
+/****************/
+body.checked header {
+    background-color: black;
+}
+
+
+
+
+
+/*******************/
+/*****SECTION 1*****/
+/*******************/
+body main section:nth-of-type(1) {
+    padding-bottom: 2em;
+}
+
+
+
+
+
+/*******************/
+/*****SECTION 2*****/
+/*******************/
+body main section:nth-of-type(2) {
+    background-size: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+body.checked main section:nth-of-type(2) {
+    background-image: url(../images/background.jpg);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: -5;
 }
 
 figure {
@@ -71,9 +126,6 @@ figure {
         height: 19.25rem;
         justify-content: center
     }
-
-
-
 }
 
 figcaption {
@@ -131,6 +183,53 @@ body.cardAnimation figcaption {
 }
 
 
+
+
+
+/*******************/
+/*****SECTION 4*****/
+/*******************/
+body main section:nth-of-type(4) {
+    position: relative;
+    height: 50vh;
+}
+
+body main section:nth-of-type(4) img {
+    top: 10em;
+    right: 0;
+    width: 10em;
+    position: absolute;
+    animation: moveIn 1s linear forwards;
+    animation-play-state: paused;
+    animation-delay: calc(var(--scroll) * -1s);
+    rotate: -90deg;
+}
+
+@keyframes moveIn {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-5em);
+    }
+}
+
+
+
+
+
+/****************/
+/*****FOOTER*****/
+/****************/
+
+
+
+
+
+/****************/
+/*****BUTTON*****/
+/****************/
 ul {
     display: flex;
     justify-content: center;
@@ -213,10 +312,4 @@ section:nth-of-type(3) ul li:nth-of-type(3) button {
 
 section:nth-of-type(3) ul li:nth-of-type(4) button {
     background-image: url(../images/poop.png);
-}
-
-
-img {
-    min-width: 15em;
-    max-width: 40%;
 }
