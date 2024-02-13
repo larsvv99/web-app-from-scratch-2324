@@ -1,0 +1,17 @@
+{
+    "firstName": "Lars",
+    "lastName": "van Veldhuizen",
+    "avatar_url": "https://avatars.githubusercontent.com/u/112852815?u=d8ee0a2d2c7e8d75d1353d9ec08e9ba8a28e1da5&v=4",
+    "age": 24,
+    "city": "Amersfoort",
+    "hobbies": [
+        "Football",
+        "Gaming",
+        "Darts"
+    ],
+    "truthsAndLies": [
+        "Pineapple on pizza is no crime",
+        "I support Feyenoord",
+        "I played in a Futsal team for 2 years"
+    ]
+}

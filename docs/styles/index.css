@@ -111,18 +111,18 @@ figure {
 }
 
 @media only screen and (max-width: 768px) {
-    img {
+    section:nth-of-type(3) img {
         rotate: 90deg;
         position: fixed;
         left: -10%;
     }
 
-    figcaption {
+    section:nth-of-type(3) figcaption {
         position: relative;
         left: -18em;
     }
 
-    figure {
+    section:nth-of-type(3) figure {
         height: 19.25rem;
         justify-content: center
     }
@@ -190,30 +190,29 @@ body.cardAnimation figcaption {
 /*****SECTION 4*****/
 /*******************/
 body main section:nth-of-type(4) {
-    position: relative;
-    height: 50vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
-body main section:nth-of-type(4) img {
-    top: 10em;
-    right: 0;
-    width: 10em;
-    position: absolute;
-    animation: moveIn 1s linear forwards;
-    animation-play-state: paused;
-    animation-delay: calc(var(--scroll) * -1s);
-    rotate: -90deg;
+body main section:nth-of-type(4) div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
-@keyframes moveIn {
-    0% {
-        transform: translateY(0);
-    }
-
-    100% {
-        transform: translateY(-5em);
-    }
+body main section:nth-of-type(4) div article {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
 }
+
+
+
 
 
 

@@ -32,6 +32,7 @@ fetch(myRequest)
 
 
         myNameButton.addEventListener("click", function () {
+
             toggleInfoText(myNameButton.innerText, data.eend.eendenNaam);
         });
 
@@ -60,39 +61,62 @@ fetch(myRequest)
         });
     });
 
-// // API background images //
-// document.addEventListener('DOMContentLoaded', function () {
-//     getRandomBackground();
-// });
-// const accessKey = 'ONdhqjmgA1HbTqfRJzMzoA1AKmlO-gUalqVelRwlfBM'
-// function getRandomBackground() {
+let map;
 
-//     // Make a request to the Unsplash API
-//     fetch(`https://api.unsplash.com/photos/random?query=background&client_id=${accessKey}`)
-//         .then(response => {
-//             if (!response.ok) {
-//                 throw new Error(`Network response was not ok: ${response.statusText}`);
-//             }
-//             return response.json();
-//         })
-//         .then(data => {
-//             const backgroundUrl = data.urls.regular;
-//             document.querySelector("section:nth-of-type(2)").style.backgroundImage = `url(${backgroundUrl})`;
-//         })
-//         .catch(error => console.error('Error fetching background image:', error));
-// }
+async function initMap(latitude, longitude) {
+    // The position from the Unsplash API
+    const position = { lat: latitude, lng: longitude };
+    // Request needed libraries.
+    //@ts-ignore
+    const { Map } = await google.maps.importLibrary("maps");
+    const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
 
-window.addEventListener("scroll", () => {
-    const img = document.getElementsByClassName("animated-img");
-    const imgRect = img.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
+    // The map, centered at the position from the Unsplash API
+    map = new Map(document.getElementById("map"), {
+        zoom: 4,
+        center: position,
+        mapId: "DEMO_MAP_ID",
+    });
 
-    if (imgRect.top >= 0 && imgRect.bottom <= windowHeight) {
-        const scrollPercent = (window.pageYOffset + windowHeight - imgRect.top) / imgRect.height;
-        img.style.setProperty("--scroll", scrollPercent);
-    }
+    // The marker, positioned at the position from the Unsplash API
+    const marker = new AdvancedMarkerElement({
+        map: map,
+        position: position,
+        title: "Marker",
+    });
+}
+
+
+
+
+
+// API background images //
+document.addEventListener('DOMContentLoaded', function () {
+    getRandomTarget();
 });
+const accessKey = 'ONdhqjmgA1HbTqfRJzMzoA1AKmlO-gUalqVelRwlfBM'
+function getRandomTarget() {
 
+    // Make a request to the Unsplash API
+    fetch(`https://api.unsplash.com/photos/random?query=people&client_id=${accessKey}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Network response was not ok: ${response.statusText}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            const backgroundUrl = data.urls.regular;
+            document.querySelector("section:nth-of-type(4) article:nth-of-type(1) img").src = backgroundUrl;
+            console.log(data)
+            const latitude = data.location.position.latitude;
+            const longitude = data.location.position.longitude;
+            console.log("Latitude:", latitude);
+            console.log("Longitude:", longitude);
+            initMap(latitude, longitude);
+        })
+        .catch(error => console.error('Error fetching background image:', error));
+}
 
 
 
@@ -135,3 +159,5 @@ function toggleAnimationClass() {
 }
 
 document.querySelector("input[type='checkbox']").addEventListener("change", toggleAnimationClass);
+
+
