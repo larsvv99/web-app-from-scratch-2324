@@ -1,5 +1,7 @@
 /*Elementen*/
 const myPage = document.querySelector("body");
+const checkbox = document.querySelector("input[type='checkbox']");
+
 const myInfoTitle = document.querySelector("h2");
 const myInfo = document.querySelector("p");
 const myInfoField = document.querySelector("figcaption");
@@ -30,67 +32,68 @@ fetch(myRequest)
         console.log(data)
         console.log(data.eend.naam)
 
-
         myNameButton.addEventListener("click", function () {
-
-            toggleInfoText(myNameButton.innerText, data.eend.eendenNaam);
+            if (checkbox.checked) {
+                toggleInfoText(myNameButton.innerText, data.eend2.eendenNaam);
+            } else {
+                toggleInfoText(myNameButton.innerText, data.eend.eendenNaam);
+            }
         });
 
         myAgeButton.addEventListener("click", function () {
-            toggleInfoText(myAgeButton.innerText, data.eend.leeftijd.toString());
+            if (checkbox.checked) {
+                toggleInfoText(myAgeButton.innerText, data.eend2.leeftijd.toString());
+            } else {
+                toggleInfoText(myAgeButton.innerText, data.eend.leeftijd.toString());
+            }
         });
 
         myLakeButton.addEventListener("click", function () {
-            toggleInfoText(myLakeButton.innerText, data.eend.woonVijver);
+            if (checkbox.checked) {
+                toggleInfoText(myLakeButton.innerText, data.eend2.woonVijver);
+            } else {
+                toggleInfoText(myLakeButton.innerText, data.eend.woonVijver);
+            }
         });
 
         myCharacterButton.addEventListener("click", function () {
-            toggleInfoText(myCharacterButton.innerText, data.eend.karakter);
+            if (checkbox.checked) {
+                toggleInfoText(myCharacterButton.innerText, data.eend2.karakter);
+            } else {
+                toggleInfoText(myCharacterButton.innerText, data.eend.karakter);
+            }
         });
 
         myBreadButton.addEventListener("click", function () {
-            toggleInfoText(myBreadButton.innerText, data.eend.favorieteBrood);
+            if (checkbox.checked) {
+                toggleInfoText(myBreadButton.innerText, data.eend2.favorieteBrood);
+            } else {
+                toggleInfoText(myBreadButton.innerText, data.eend.favorieteBrood);
+            }
         });
 
         myKwekButton.addEventListener("click", function () {
-            toggleInfoText(myKwekButton.innerText, data.eend.kwikKwekKwak);
+            if (checkbox.checked) {
+                toggleInfoText(myKwekButton.innerText, data.eend2.kwikKwekKwak);
+            } else {
+                toggleInfoText(myKwekButton.innerText, data.eend.kwikKwekKwak);
+            }
         });
 
         myTargetButton.addEventListener("click", function () {
-            toggleInfoText(myTargetButton.innerText, data.eend.favorieteDoelwit[0].doelwit1);
+            if (checkbox.checked) {
+                toggleInfoText(myTargetButton.innerText, data.eend2.favorieteDoelwit[0].doelwit1);
+            } else {
+                toggleInfoText(myTargetButton.innerText, data.eend.favorieteDoelwit[0].doelwit1);
+            }
         });
     });
 
-let map;
-
-async function initMap(latitude, longitude) {
-    // The position from the Unsplash API
-    const position = { lat: latitude, lng: longitude };
-    // Request needed libraries.
-    //@ts-ignore
-    const { Map } = await google.maps.importLibrary("maps");
-    const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
-
-    // The map, centered at the position from the Unsplash API
-    map = new Map(document.getElementById("map"), {
-        zoom: 4,
-        center: position,
-        mapId: "DEMO_MAP_ID",
-    });
-
-    // The marker, positioned at the position from the Unsplash API
-    const marker = new AdvancedMarkerElement({
-        map: map,
-        position: position,
-        title: "Marker",
-    });
-}
 
 
 
 
-
-// API background images //
+// -----Unsplash API Target Images----- //
 document.addEventListener('DOMContentLoaded', function () {
     getRandomTarget();
 });
@@ -98,7 +101,7 @@ const accessKey = 'ONdhqjmgA1HbTqfRJzMzoA1AKmlO-gUalqVelRwlfBM'
 function getRandomTarget() {
 
     // Make a request to the Unsplash API
-    fetch(`https://api.unsplash.com/photos/random?query=people&client_id=${accessKey}`)
+    fetch(`https://api.unsplash.com/photos/random?query=portrait&client_id=${accessKey}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`Network response was not ok: ${response.statusText}`);
@@ -120,6 +123,9 @@ function getRandomTarget() {
 
 
 
+
+
+// -----Kaartje met informatie----- //
 let infoFieldVisible = false;
 
 // Functie om de tekst van myInfo en myInfoTitle te updaten en de zichtbaarheid van myInfoField te beheren
@@ -139,9 +145,11 @@ function toggleInfoText(newTitle, newText) {
 }
 
 
-/*Thema wijziging*/
+
+
+
+// ------Thema wijziging----- //
 function toggleAnimationClass() {
-    const checkbox = document.querySelector("input[type='checkbox']");
 
     console.log(checkbox)
     if (checkbox.checked) {
