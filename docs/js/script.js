@@ -15,7 +15,7 @@ const myBreadButton = document.querySelector("section:nth-of-type(3) ul li:nth-o
 const myKwekButton = document.querySelector("section:nth-of-type(3) ul li:nth-of-type(3) button");
 const myTargetButton = document.querySelector("section:nth-of-type(3) ul li:nth-of-type(4) button");
 
-const myRequest = new Request("https://larsvv99.github.io/web-app-from-scratch-2324/json/eigenschappen.json");
+const myRequest = new Request("https://larsvv99.github.io/web-app-from-scratch-2324/data/eigenschappen.json");
 
 fetch(myRequest)
     .then((data) => {
@@ -95,7 +95,7 @@ const accessKey = 'ONdhqjmgA1HbTqfRJzMzoA1AKmlO-gUalqVelRwlfBM'
 function getRandomTarget() {
 
     // Make a request to the Unsplash API
-    fetch(`https://api.unsplash.com/photos/random?query=portrait&client_id=${accessKey}`)
+    fetch(`https://api.unsplash.com/photos/random?orientation=portrait&query=portrait&client_id=${accessKey}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`Network response was not ok: ${response.statusText}`);
@@ -105,10 +105,19 @@ function getRandomTarget() {
         .then(data => {
             const backgroundUrl = data.urls.regular;
             document.querySelector("section:nth-of-type(4) article:nth-of-type(1) img").src = backgroundUrl;
-            console.log(data)
+            document.querySelector("section:nth-of-type(4) article:nth-of-type(1) img").alt = data.alt_description;
+
+            const location = data.location.name || 'unknown';
+            const latitude = data.location.position.latitude || 'unknown';
+            const longitude = data.location.position.longitude || 'unknown';
+
+            const targetInfo = document.querySelector("section:nth-of-type(4) article:nth-of-type(2) p");
+            targetInfo.innerText = `Description: ${data.alt_description}\nLocation: ${location}\nCoordinates: ${latitude}, ${longitude}`;
+
         })
         .catch(error => console.error('Error fetching background image:', error));
 }
+
 
 
 
