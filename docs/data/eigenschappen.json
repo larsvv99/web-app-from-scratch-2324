@@ -7,13 +7,11 @@
         "woonVijver": "Emiclaer vijver",
         "favorieteBrood": "Kwarkbrood",
         "kwikKwekKwak": "Kwik",
-        "favorieteDoelwit": [
-            {
-                "doelwit1": "Gordon",
-                "doelwit2": "Donald Duck",
-                "doelwit3": "Redouan Kwakkie"
-            }
-        ]
+        "favorieteDoelwit": {
+            "doelwit1": "Gordon",
+            "doelwit2": "Donald Duck",
+            "doelwit3": "Redouan Kwakkie"
+        }
     },
     "eend2": {
         "naam": "Lars",
@@ -23,12 +21,10 @@
         "woonVijver": "Binnenplaats vijver",
         "favorieteBrood": "Bedroggebrood",
         "kwikKwekKwak": "Kwik",
-        "favorieteDoelwit": [
-            {
-                "doelwit1": "Gordon",
-                "doelwit2": "Donald Duck",
-                "doelwit3": "Redouan Kwakkie"
-            }
-        ]
+        "favorieteDoelwit": {
+            "doelwit1": "Gordon",
+            "doelwit2": "Donald Duck",
+            "doelwit3": "Redouan Kwakkie"
+        }
     }
 }

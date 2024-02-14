@@ -107,8 +107,8 @@ function getRandomTarget() {
             document.querySelector("section:nth-of-type(4) article:nth-of-type(1) img").src = backgroundUrl;
             document.querySelector("section:nth-of-type(4) article:nth-of-type(1) img").alt = data.alt_description;
 
-            const location = data.location.name || 'unknown';
-            const latitude = data.location.position.latitude || 'unknown';
+            const location = data.location.name || 'Hard to find';
+            const latitude = data.location.position.latitude || 'Location';
             const longitude = data.location.position.longitude || 'unknown';
 
             const targetInfo = document.querySelector("section:nth-of-type(4) article:nth-of-type(2) p");
