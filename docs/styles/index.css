@@ -2,35 +2,19 @@
 /*Huisstijl*/
 /***********/
 :root {
-    --huisstijlkleur-grijs: #96aab9;
-    --huisstijlkleur-donkergrijs: #4d565e;
+    --huisstijlkleur-grijs: #4a525a;
+    --huisstijlkleur-donkergrijs: #24272b;
+    --huisstijlkleur-blauw: #004ba8;
+    --huisstijlkleur-lichtblauw: #3e78b2;
     --huisstijlkleur-donkeroranje: #cb2f00;
     --huisstijlkleur-gevangenisgrijs: #bbbbbb;
-    --huisstijlkleur-zwart: #000000;
+    --huisstijlkleur-zwart: #07070a;
     --huisstijlkleur-wit: #ffffff;
     --huisstijltekst: "Poppins", sans-serif;
 }
 
 html {
     font-family: var(--huisstijltekst);
-}
-
-input {
-    appearance: none;
-}
-
-label:hover {
-    cursor: pointer;
-    color: var(--huisstijlkleur-donkeroranje);
-
-}
-
-header {
-    width: 100%;
-    height: 5em;
-    background-color: var(--huisstijlkleur-grijs);
-    color: var(--huisstijlkleur-wit);
-    align-items: center;
 }
 
 body,
@@ -44,6 +28,8 @@ figure {
 body {
     flex-direction: column;
     margin: 0;
+    background-color: var(--huisstijlkleur-lichtblauw);
+    color: var(--huisstijlkleur-wit);
 }
 
 body.checked {
@@ -74,9 +60,26 @@ img {
 /*****HEADER*****/
 /****************/
 body.checked header {
-    background-color: black;
+    background-color: var(--huisstijlkleur-zwart);
 }
 
+input {
+    appearance: none;
+}
+
+label:hover {
+    cursor: pointer;
+    color: var(--huisstijlkleur-zwart);
+
+}
+
+header {
+    width: 100%;
+    height: 5em;
+    background-color: var(--huisstijlkleur-blauw);
+    color: var(--huisstijlkleur-wit);
+    align-items: center;
+}
 
 
 
@@ -314,9 +317,9 @@ section ul li button:hover span {
 
 section ul li button:hover {
     transform: scale(1.2);
-    background-color: var(--huisstijlkleur-donkergrijs);
+    background-color: var(--huisstijlkleur-gevangenisgrijs);
     z-index: 1;
-    border: 2px solid var(--huisstijlkleur-donkeroranje);
+    border: 2px solid var(--huisstijlkleur-wit);
     box-shadow: 0px 2px 2px 2px rgba(55, 55, 55, 0.2);
 }
 

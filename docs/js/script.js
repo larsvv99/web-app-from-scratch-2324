@@ -1,7 +1,6 @@
 /*Elementen*/
 const myPage = document.querySelector("body");
 const checkbox = document.querySelector("input[type='checkbox']");
-
 const myInfoTitle = document.querySelector("h2");
 const myInfo = document.querySelector("p");
 const myInfoField = document.querySelector("figcaption");
@@ -16,8 +15,6 @@ const myBreadButton = document.querySelector("section:nth-of-type(3) ul li:nth-o
 const myKwekButton = document.querySelector("section:nth-of-type(3) ul li:nth-of-type(3) button");
 const myTargetButton = document.querySelector("section:nth-of-type(3) ul li:nth-of-type(4) button");
 
-console.log(myPage)
-
 const myRequest = new Request("https://larsvv99.github.io/web-app-from-scratch-2324/json/eigenschappen.json");
 
 fetch(myRequest)
@@ -29,9 +26,6 @@ fetch(myRequest)
         return data.json();
     })
     .then((data) => {
-        console.log(data)
-        console.log(data.eend.naam)
-
         myNameButton.addEventListener("click", function () {
             if (checkbox.checked) {
                 toggleInfoText(myNameButton.innerText, data.eend2.eendenNaam);
@@ -112,11 +106,6 @@ function getRandomTarget() {
             const backgroundUrl = data.urls.regular;
             document.querySelector("section:nth-of-type(4) article:nth-of-type(1) img").src = backgroundUrl;
             console.log(data)
-            const latitude = data.location.position.latitude;
-            const longitude = data.location.position.longitude;
-            console.log("Latitude:", latitude);
-            console.log("Longitude:", longitude);
-            initMap(latitude, longitude);
         })
         .catch(error => console.error('Error fetching background image:', error));
 }
@@ -150,8 +139,6 @@ function toggleInfoText(newTitle, newText) {
 
 // ------Thema wijziging----- //
 function toggleAnimationClass() {
-
-    console.log(checkbox)
     if (checkbox.checked) {
         myPage.classList.add("checked");
         myPage.classList.remove("cardAnimation");
@@ -161,8 +148,6 @@ function toggleAnimationClass() {
         myPage.classList.remove("checked");
         myPage.classList.remove("cardAnimation");
         myDuck.src = "./images/badeendje.png"
-
-
     }
 }
 
